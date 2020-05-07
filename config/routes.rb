@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root to: 'cocktails#index'
-  resources :cocktails, only: [:index, :new, :create, :show, :search] do
+  resources :cocktails, only: [:index, :new, :create, :show,] do
+  
     resources :doses, only: [:new, :create]
   end
   resources :doses, only: [:destroy]
+  post "coctails/search", to: "cocktails#search"
 end

@@ -1,59 +1,62 @@
 
-<div class="navbar-lewagon navbar-fixed-top">
-<h2> Self-Made Cocktail </h2>
-  <a class="navbar-lewagon-brand" href="/">
-  <%= image_tag "logo.png", alt: "Logo Cockails", width: 100 %>
-</a>
-  <div class="navbar-lewagon-right hidden-xs hidden-sm">
-    <a class="btn btn-primary btn-small my-btn  float-right mr-3" href="/cocktails/new">New Cocktail</a>
+<div class="">
+  <div class="sticky mb-3 navbar-lewagon navbar-fixed-top">  
+    <div class="row">
+      <div class="col">
+         <a class="navbar-lewagon-brand" href="/">
+          <%= image_tag "logo.png", alt: "Logo Cockails", width: 100 %>
+        </a>
+        <span class="title-logo"> Micko-Made Cocktail </span>
+      </div>
+      <div class="col">
+        <div class="navbar-lewagon-right hidden-xs hidden-sm">
+            <a class="btn btn-primary btn-small my-btn  float-right mr-3 mt-3" href="/cocktails/new">Create Cocktail</a>
+        </div>
+      </div>
+    </div>  
+  
   </div>
   <div class="banner home-banner">
-  <div class="banner-content">
-    <h1>Home-Made Cocktail</h1>
-    <p><span id="banner-typed-text">Learn to mak</span><span class="typed-cursor" style="animation-iteration-count: 0;">|</span></p>
-    <ul>
-    <% @cocktails.each do |cocktail| %>
-      <li><%= cocktail.name %></li>
-    <% end %>
-  </ul>
-  <%= link_to "Create your own cocktail", new_cocktail_path %>
+    <div class="search-section">
+      <h1 class="search-title" > You are looking for a perfect coctail? <h1>
+      <h3 class="search-title" > Then you are on a right place... <h3>
+      <p class="search-title">
+        <span id="banner-typed-text"></span>
+      </p>
+      <form id="search-form" class="simple_form form-inline my-5" novalidate="novalidate" accept-charset="UTF-8" action="coctails/search" method="post">><input name="utf8" type="hidden" value="✓">
+        <span class="string required home_search_keyword flex-grow-1">
+        <input class="form-control transparent-input string required w-100" type="text" name="home_search[keyword]" id="home_search_keyword" placeholder=""></span>
+        <input type="submit" name="commit" value="Find the perfect drink" class="btn btn-primary" data-disable-with="Find the perfect drink">
+      </form>
+    </div>
   </div>
-</div>
-<div>
-<form id="search-form" class="simple_form form-inline my-5" data-controller="home" novalidate="novalidate" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
-          <span class="string required home_search_keyword flex-grow-1"><input class="form-control string required w-100" type="text" name="home_search[keyword]" id="home_search_keyword" placeholder=""></span>
-          <input type="submit" name="commit" value="Find the perfect drink" class="btn btn-primary" data-disable-with="Find the perfect drink">
-</form>
-</div>
 
-<div class="container">
-<div class="card-columns">
-  <div class="row">
-    <div class="col s12 m6">
-  <div class="card "> <%= image_tag "1.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "2.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "3.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "4.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "5.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "6.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "7.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "8.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "9.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "10.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "11.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "12.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "13.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "14.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "15.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "16.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "17.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "18.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "19.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "20.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "21.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "22.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "23.jpeg", alt: "Cockail"%> </div>
-  <div class="card "> <%= image_tag "24.jpeg", alt: "Cockail"%> </div>
-</div>
-</div>
+  <div class="container">
+  <h1> Our unique cocktails, with finest ingredients</h1>
+    <div class="row">
+      <div class="card col-md-4"> <%= image_tag "1.jpeg", alt: "Cockail", width: "100%", height: 600 %> </div>
+      <div class="card col-md-4 "> <%= image_tag "2.jpeg", alt: "Cockail", width: "100%", height: 600 %> </div>
+      <div class="card col-md-4"> <%= image_tag "3.jpeg", alt: "Cockail", width: "100%", height: 600 %> </div>
+      <div class="card col-md-4"> <%= image_tag "4.jpeg", alt: "Cockail", width: "100%", height: 600 %> </div>
+      <div class="card col-md-4"> <%= image_tag "5.jpeg", alt: "Cockail" , width: "100%", height: 600%> </div>
+      <div class="card col-md-4"> <%= image_tag "6.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4"> <%= image_tag "29.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4"> <%= image_tag "27.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "9.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "10.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "11.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "12.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "13.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "26.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "15.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "16.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "17.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "18.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "19.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "20.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "21.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "22.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "23.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+      <div class="card col-md-4 "> <%= image_tag "24.jpeg", alt: "Cockail", width: "100%", height: 600%> </div>
+    </div>
 </div>

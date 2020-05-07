@@ -30,5 +30,6 @@ def index
     params.require(:cocktail).permit(:name)
   end
   def search
+    @cocktail = Cocktail.find(params[:name])
   end
 end
