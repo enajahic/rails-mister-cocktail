@@ -1,0 +1,58 @@
+// Import page-specific CSS files here.
+@import "home";
+.btn-small {
+    justify-self: end;
+    border-radius: 10px;
+}
+.home-banner {
+background-image:url(/assets/banner.jpeg);
+
+height: 1000px;
+ width: 100%;
+}
+
+
+.card {
+    background-color: white;
+    border: 1px solid rgb(240, 240, 240);
+    padding: 8px;
+    width: 300px;  /*Give the card a width */
+  }
+  
+  
+  .card-image {
+    background-size: cover; /*resize image to fit container*/
+    background-position: center;
+    height: 200px;
+    width: 100%;  /*Fit the parent div*/
+  }
+  
+  .card .list-inline {
+    color: #B0B0B0;
+    text-align: right;
+    padding-top: 8px;
+  }
+  
+  .card .btn {
+    opacity: 0;
+    transition: .3s;
+  }
+  
+  .card:hover .btn {
+    opacity: 1;
+  }
+  
+
+  element.style {
+}
+.mb-5, .my-5 {
+    margin-bottom: 3rem !important;
+}
+.mt-5, .my-5 {
+    margin-top: 3rem !important;
+}
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
