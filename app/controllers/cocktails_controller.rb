@@ -1,4 +1,5 @@
 class CocktailsController < ApplicationController
+  skip_before_action :verify_authenticity_token
 def index
     @cocktails = Cocktail.all
   end
@@ -27,9 +28,9 @@ def index
   # end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :keyword)
   end
   def search
-    @cocktail = Cocktail.find(params[:name])
+    @cocktail = Cocktail.where("name = ?", params[:keyword])
   end
 end
