@@ -5,7 +5,7 @@
     border-radius: 10px;
 }
 .home-banner {
-    background-image:url(/assets/logo1.jpeg);
+    background-image:asset-url('/assets/logo1.jpeg');
     height: 1000px;
     width: 100%;
     background-size: cover;
@@ -64,4 +64,9 @@
 }
 .transparent-input {
     background-color: transparent;
+}
+.banner-title {
+  color: white;
+  font-family: 'Lobster', cursive;
+  font-size: 48px;
 }

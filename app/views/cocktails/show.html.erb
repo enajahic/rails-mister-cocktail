@@ -1,12 +1,73 @@
-<h1><%= @cocktail.name %></h1>
-<%= link_to "Add a new dose on this cocktail", new_cocktail_dose_path(@cocktail) %>
+<div class="">
+  <div class="sticky mb-3 navbar-lewagon navbar-fixed-top">  
+    <div class="row">
+      <div class="col">
+         <a class="navbar-lewagon-brand" href="/">
+          <%= image_tag "logo.png", alt: "Logo Cockails", width: 100 %>
+        </a>
+        <span class="title-logo"> Micko-Made Cocktail </span>
+      </div>
+      <div class="col">
+        <div class="navbar-lewagon-right hidden-xs hidden-sm">
+            <a class="btn btn-primary btn-small my-btn  float-right mr-3 mt-3" href="/cocktails/new">Create Cocktail</a>
+        </div>
+      </div>
+    </div>  
+</div>  
+
+<div>
+<div class="banner-image d-flex" style="background-image: url('<%= image_path @cocktail.picture %>');">
+  <h1 class="banner-title d-justify-self-center m-auto"><%= @cocktail.name %></h1>
+</div>
 
 
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-    <li>
-      <%= dose.description %> of <%= dose.ingredient.name %>
-      <%= link_to "Delete dose", dose_path(dose), method: :delete %>
-    </li>
-  <% end %>
-</ul>
+
+
+<div class="col-12 col-sm-6 mx-auto">
+    <div class="d-flex">
+      <h1>Ingredients</h1>
+      <div class="ingredients-button">
+      <%= link_to new_cocktail_dose_path(@cocktail) do %>
+        <div href="#" class="btn btn-outline-secondary btn-hover-container" data-toggle="modal" data-target="#editIngredients">
+          <i class="far fa-edit"></i> Add a new dose
+        </div>
+      <% end %>
+      </div>
+    </div>
+    <ul class="list-ingredients list-group">
+    <% @cocktail.doses.each do |dose| %>
+        <li class="list-group-item">
+        <%= dose.description %> of <%= dose.ingredient.name %>
+        <%= link_to "Delete dose", dose_path(dose), method: :delete %>
+      </li>
+    <% end %>
+    </ul>
+    </div>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
