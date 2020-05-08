@@ -24,11 +24,9 @@
     <div class="d-flex">
       <h1>Ingredients</h1>
       <div class="ingredients-button">
-      <%= link_to new_cocktail_dose_path(@cocktail) do %>
-        <div href="#" class="btn btn-outline-secondary btn-hover-container" data-toggle="modal" data-target="#editIngredients">
+        <div  data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-secondary btn-hover-container" data-toggle="modal" data-target="#editIngredients">
           <i class="far fa-edit"></i> Add a new dose
         </div>
-      <% end %>
       </div>
     </div>
     <ul class="list-ingredients list-group">
@@ -41,12 +39,6 @@
     </ul>
     </div>
 </div>
-
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -68,11 +60,23 @@
             <li class="d-flex justify-content-between mx-auto w-75"><span>6 parts of Fruit punch</span> <a data-toggle="modal" data-target="#deleteIngredient200"><i class="far fa-trash-alt"></i></a></li>
         </ul>
 
+      <div class="">
+        <h5>Add a new dose:</h5>
+        <div>
+          <%= simple_form_for([@cocktail, @dose]) do |f|%>
+            <%= f.input :description %>
+            <%= f.association :ingredient %>
+            <%= f.submit class:"btn btn-primary"%>
+          <% end %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
       </div>
+
     </div>
   </div>
+</div>
 </div>

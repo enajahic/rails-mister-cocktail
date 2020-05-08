@@ -11,6 +11,11 @@ import 'bootstrap';
 import { loadDynamicBannerText } from '../components/banner';
 
 loadDynamicBannerText();
+
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
