@@ -67,6 +67,22 @@
 }
 .banner-title {
   color: white;
-  font-family: 'Lobster', cursive;
-  font-size: 48px;
+  font-family: 'Amatic SC', cursive;
+  font-size: 68px;
+  text-shadow: 3px 3px 4px #000000;
+}
+.footer {
+  text-align: center;
+  padding: 18px;
+  background-color: white;
+  margin-top: 30px;
+ flex-grow: 0;
+  position: sticky;
+  top: 0px;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 1.25em;
+  font-size: 40px;
 }

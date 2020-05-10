@@ -10,7 +10,9 @@
       </div>
       <div class="col">
         <div class="navbar-lewagon-right hidden-xs hidden-sm">
-            <a class="btn btn-primary btn-small my-btn  float-right mr-3 mt-3" href="/cocktails/new">Create Cocktail</a>
+          <a class="btn btn-outline-secondary btn-small my-btn  float-right mr-3 mt-3" href="/about">About Us</a>
+          <a class="btn btn-primary btn-small my-btn  float-right mr-3 mt-3" data-toggle="modal" data-target="#exampleModal2">Create Cocktail</a>
+    
         </div>
       </div>
     </div>  
@@ -18,11 +20,11 @@
   </div>
   <div class="banner home-banner">
     <div class="search-section">
-      <h1 class="search-title" > You are looking for a perfect cocktail? <h1>
-      <h3 class="search-title" > Then you are on a right place... <h3>
-      <p class="search-title">
+      <h1 class="search-title" > You are looking for a perfect cocktail? </h1>
+      <h2 class="search-title" > Then you are on a right place... </h2>
+      <h3 class="search-title">
         <span id="banner-typed-text"></span>
-      </p>
+      </h3>
       <form id="search-form" class="simple_form form-inline my-5" novalidate="novalidate" accept-charset="UTF-8" action="/search" method="post"> <input name="utf8" type="hidden" value="✓">
         <span class="string required home_search_keyword flex-grow-1">
         <input class="form-control transparent-input string required w-100" type="text" name="keyword" id="home_search_keyword" placeholder=""></span>
@@ -30,20 +32,96 @@
       </form>
     </div>
   </div>
+<div id="welcome" class="container-site-section mt-5 mb-3">
+<h1 class="text-center "> Welcome to Micko Made Cocktails </h1>
+<p> Micko Made Cocktails was founed in München in 1991 with the mission of giving great and unique cocktails to the world. Our dedication and tasty cocktails have won us numerous awords. Man, being reasonable, must get drunk. The best of life is but intoxication. </p>
+ </div>
+<div class="container">
+  <div id="why" class="conteiner-selection mt-5">
+    <h1 class="text-center mb-3">Why Choose Us</h1>
+    <div class="cards row">
 
+      <div class="card col-md-4 ">
+      <span class="fa fa-cocktail fa-3x text-primary"> </span>
+        <h2>Great Taste</h2>
+        <p> May your glass be ever full, May the roof over your head be always strong, And may you be in heaven Half an hour before the devil knows you’re dead.
+        
+        </p>
+      </div>
+
+      <div class="card col-md-4">
+      <span class="fa fa-heart fa-3x text-primary"> </span>
+        <h2>Healty & Organic</h2>   
+        <p>We use only organic fruits. All our cocktails are vegan friendly. Unique flavors. We bring people together. 
+          
+        </p>
+      </div>
+
+      <div class="card col-md-4">
+      <span class="fa fa-shopping-basket fa-3x text-primary"> </span>
+        <h2>Next Day Delivery</h2>
+        <p>We deliver you a secure hangover next day. One martini is alright, two is too many, three is not enough...
+         
+      </div>
+    </div>
+  </div>
   <div class="container">
-  <h1> Our unique cocktails, with finest ingredients</h1>
+  <h1> Our Gallery</h1>
     <div class="row">
       <% @cocktails.each do |cocktail| %>
-        <div class="card col-md-4 " data-aos="zoom-in">
-        <%= link_to cocktail_path(cocktail) do %>
-           <%= image_tag cocktail.picture, alt: "Cockail", width: "100%", height: 600  %>
-           <% end %>
-         </div>
+        <div class="card col-md-4" data-aos="zoom-in" style="background-image: url('<%= image_path cocktail.picture %>'); height: 600px; background-size: cover;">
+        <%= link_to cocktail_path(cocktail), id:"title4", class:"d-flex" do%>
+          <div class="col">
+             <h1 class="banner-title"><%= cocktail.name %></h1>
+          </div>
+          <div class="col star-rating-right">
+            <h5 class="small"> <i class="fa fa-star" aria-hidden="true"></i> <%= render_average(cocktail) %></h5>
+          </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
+  </div>
 </div>
-<div id="footer" class="row bg-primary vh-10 justify-content-center align-content-end mt-5">
-  <a class="navbar-brand text-white" href="/">
-    <span class="logo">Micko Made Cocktail <i class="fa fa-cocktail"></i></span>
-</a></div>
+
+<div class="footer">
+  <div class="links">
+    <a href="https://www.facebook.com/CatMemes/"><i class="fab fa-fw fa-facebook-f"></i></a>
+    <a href="https://github.com/enajahic"><i class="fab fa-fw fa-github"></i></a>
+    <a href="https://twitter.com/hashtag/catmemes?lang=en"><i class="fab fa-fw fa-twitter"></i></a>
+    <a href="https://www.instagram.com/myfavcatmeme/?hl=en"><i class="fab fa-fw fa-instagram"></i></a>
+    <p>This website was coded with <i class="fas fa-heart"></i> at Le Wagon.</p>
+  </div>
+</div>
+
+
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your cocktail recipe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="">
+        <h3>Create your Cocktail</h3>
+        <div>
+          <%= simple_form_for(@newcocktail) do |f| %>
+            <%= f.input :name %>
+            <%= f.input :picture %>
+            <%= f.submit class:"btn btn-primary"%>
+          <% end %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 Cocktail.destroy_all
 Ingredient.destroy_all
 
@@ -39,7 +40,7 @@ cocktails = [
     },
   {
     name: "Frosting Shots",
-    picture: '27.jpeg'
+    picture: '32.jpeg'
     },
   {
     name: "Oaxacan Rusty Nail",
@@ -110,8 +111,30 @@ cocktails = [
   }
 ]
 
-ingredients = %w(lemon ice mint leaves redbull jagermeister sugar tonic gin rhum lavander watermelon blueberry raspberry whiskey)
+ingredients = %w(lemon ice mint leaves redbull jagermeister sugar tonic gin rhum lavander watermelon blueberry raspberry whiskey orange  campari champagne)
 ingredients.each { |ingredient| Ingredient.create(name: ingredient) }
 
 
-cocktails.each { |cocktail| Cocktail.create(cocktail) }
+cocktails.each { |cocktail| 
+    created = Cocktail.create(cocktail)
+
+    20.times do |n|
+      content = Faker::Restaurant.review
+      title = ["Excellent", "Good", "Average", "The best", "Great", "Love this place", "Best cocktails ever!", "You must try these cocktails!"].sample
+      rating = rand(1..5)
+      Review.create!(
+        title: title,
+        content: content,
+        rating: rating,
+        cocktail: created)
+    end
+    5.times do |n|
+      desc = ["1 dl of", "2 dl of", "5 dl of","3 parts of", "5oz of", "4 pieces of", "1 juice of", "1/3 cup (80ml)of", "100ml of", "50ml of", "200ml of", "75ml of", "150ml of","large handful of ice and", "1 tbsp of","pinch of", "small handful mint leaves and"].sample
+      ingredient = Ingredient.all.sample
+
+      Dose.create!(
+        description: desc,
+        cocktail: created,
+        ingredient: ingredient )
+    end
+}

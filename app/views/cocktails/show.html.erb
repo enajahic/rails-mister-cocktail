@@ -9,7 +9,8 @@
       </div>
       <div class="col">
         <div class="navbar-lewagon-right hidden-xs hidden-sm">
-            <a class="btn btn-primary btn-small my-btn  float-right mr-3 mt-3" href="/cocktails/new">Create Cocktail</a>
+          <a class="btn btn-outline-secondary btn-small my-btn  float-right mr-3 mt-3" href="/about">About Us</a>
+          <a class="btn btn-primary btn-small my-btn float-right mr-3 mt-3"  data-toggle="modal" data-target="#exampleModal2"> Create Cocktail</a>
         </div>
       </div>
     </div>  
@@ -18,9 +19,11 @@
 <div>
 <div class="banner-image d-flex" style="background-image: url('<%= image_path @cocktail.picture %>');">
   <h1 class="banner-title d-justify-self-center m-auto"><%= @cocktail.name %></h1>
+  <h3 class="search-title">
+</h3>
 </div>
 
-<div class="col-12 col-sm-6 mx-auto">
+<div class="col-12 col-sm-6 mx-auto mt-5">
     <div class="d-flex">
       <h1>Ingredients</h1>
       <div class="ingredients-button">
@@ -32,8 +35,33 @@
     <ul class="list-ingredients list-group">
     <% @cocktail.doses.each do |dose| %>
         <li class="list-group-item">
-        <%= dose.description %> of <%= dose.ingredient.name %>
+        <%= dose.description %> <%= dose.ingredient.name %>
         <%= link_to "Delete dose", dose_path(dose), method: :delete %>
+      </li>
+    <% end %>
+    </ul>
+    </div>
+</div>
+
+<div class="col-12 col-sm-6 mx-auto mt-5">
+    <div class="d-flex">
+      <h1>Reviews</h1>
+      <div class="ingredients-button">
+        <div  data-toggle="modal" data-target="#exampleModal3" class="btn btn-outline-secondary btn-hover-container" data-toggle="modal" data-target="#editIngredients">
+          <i class="far fa-star"></i> Leave us a review
+        </div>
+      </div>
+    </div>
+    <ul class="list-ingredients list-group">
+    <% @cocktail.reviews.each do |review| %>
+      <li class="list-group-item">
+       <%= review.title %>  
+       
+  <div class="review-rating-status <%= status_for(review) %> ">
+    <p class="review-rating-emoji"> <%= review.content %><%= emoji_for(review) %></p>
+    <p class="review-rating"><%= stars_icons_for(review) %></p>
+    <div class="sqs-block-content"><hr></div>
+  </div>
       </li>
     <% end %>
     </ul>
@@ -45,22 +73,23 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Our cocktail recipe</h5>
+       
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <h3>Ingredients</h3>
-        <ul class="list-ingredients">
-            <li class="d-flex justify-content-between mx-auto w-75"><span>6 parts of Watermelon</span> <a data-toggle="modal" data-target="#deleteIngredient196"><i class="far fa-trash-alt"></i></a></li>
-            <li class="d-flex justify-content-between mx-auto w-75"><span>1 part of Vodka</span> <a data-toggle="modal" data-target="#deleteIngredient197"><i class="far fa-trash-alt"></i></a></li>
-            <li class="d-flex justify-content-between mx-auto w-75"><span>7 parts of Lemon</span> <a data-toggle="modal" data-target="#deleteIngredient198"><i class="far fa-trash-alt"></i></a></li>
-            <li class="d-flex justify-content-between mx-auto w-75"><span>8 parts of Lavander</span> <a data-toggle="modal" data-target="#deleteIngredient199"><i class="far fa-trash-alt"></i></a></li>
-            <li class="d-flex justify-content-between mx-auto w-75"><span>6 parts of Fruit punch</span> <a data-toggle="modal" data-target="#deleteIngredient200"><i class="far fa-trash-alt"></i></a></li>
+        <ul class="list-ingredients list-group">
+        <% @cocktail.doses.each do |dose| %>
+            <li class="list-group-item">
+            <%= dose.description %> <%= dose.ingredient.name %>
+            <%= link_to "Delete dose", dose_path(dose), method: :delete %>
+          </li>
+        <% end %>
         </ul>
 
-      <div class="">
+      <div class="dose mt-5 p-3">
         <h5>Add a new dose:</h5>
         <div>
           <%= simple_form_for([@cocktail, @dose]) do |f|%>
@@ -79,4 +108,79 @@
     </div>
   </div>
 </div>
+<!-- Modal2 -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your cocktail recipe</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="">
+        <h3>Create your Cocktail</h3>
+        <div>
+          <%= simple_form_for(@newcocktail) do |f| %>
+            <%= f.input :name %>
+            <%= f.input :picture %>
+            <%= f.submit class:"btn btn-primary"%>
+          <% end %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+<!-- Modal3 -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body p-3 mb-5">
+      <div class="">
+        
+        <h1>Leave Us Review</h1>
+
+          <%= simple_form_for([@cocktail, @review]) do |f|%>
+            <%= f.input :title %>
+            <%= f.input :content %>
+            <%= f.input :rating, as: :select, collection:[1, 2,3,4,5] %>
+
+            <%= f.submit class:"btn btn-primary" %>
+          <% end %>
+         
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+<div class="footer">
+    <div class="links">
+      <a href="https://www.facebook.com/CatMemes/"><i class="fab fa-fw fa-facebook-f"></i></a>
+      <a href="https://github.com/enajahic"><i class="fab fa-fw fa-github"></i></a>
+      <a href="https://twitter.com/hashtag/catmemes?lang=en"><i class="fab fa-fw fa-twitter"></i></a>
+      <a href="https://www.instagram.com/myfavcatmeme/?hl=en"><i class="fab fa-fw fa-instagram"></i></a>
+      <p>This website was coded with <i class="fas fa-heart"></i> at Le Wagon.</p>
+    </div>
 </div>

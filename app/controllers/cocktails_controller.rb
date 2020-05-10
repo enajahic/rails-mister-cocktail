@@ -1,7 +1,10 @@
 class CocktailsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  helper AverageHelper
+
   def index
     @cocktails = Cocktail.all
+    @newcocktail = Cocktail.new
   end
 
   def new
@@ -20,9 +23,13 @@ class CocktailsController < ApplicationController
   end
 
   def show
+    @newcocktail = Cocktail.new
     @cocktail = Cocktail.find(params[:id])
     @dose = Dose.new
     @dose.cocktail = @cocktail
+    @review = Review.new
+    @review.cocktail = @cocktail
+
   end
 
   # def edit

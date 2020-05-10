@@ -15,6 +15,7 @@
 }
 .title-logo{
   font-size: x-large;
+  font-family: 'Amatic SC', cursive;
 }
 
 .banner-image {
@@ -44,4 +45,77 @@
 .ingredients-button {
   align-self: center;
   margin-left: auto;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.card {
+
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgb(230,230,230);
+  text-align: center;
+ font-size: medium;
+  border: 1px solid rgb(230,230,230);
+  margin-bottom: 30px;
+}
+#why{
+  font-size: 42px;
+}
+.site-section{
+  text-align: center;
+  padding: 50px 0 60px;
+  font-family: 'Text Me One', sans-serif;
+}
+.site-section h1 {
+  font-weight: normal;
+  margin-bottom: 30px;
+  text-align: center;
+
+}
+#welcome p {
+  max-width: 800px;
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Text Me One', sans-serif;
+}
+h1, h2 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 48px;
+}
+ h5, p {
+  font-family: 'Text Me One', sans-serif;
+}
+h3 {
+  font-family: 'Source Code Pro', monospace;
+}
+
+#title4 {
+  opacity: 0;
+}
+
+.card:hover #title4{
+  
+  color: white;
+  text-decoration: none;
+  transition: 2s;
+  opacity: 100;
+}
+
+.star-rating-right{
+  position: fixed;
+  bottom: 10px;
+  /* right: 10px; */
+  text-align: end;
+
+  i {
+    color: darkgoldenrod;
+  }
+  .small{
+    font-size: xx-large;
+  }
 }
